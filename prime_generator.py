@@ -97,9 +97,12 @@ def get_probably_prime(n):
 
 if __name__ == "__main__":
 	start_time = time.time()
-	n = 4096
+	n = 8192
+	print(f"Number of bits: {n}...")
 	p = get_probably_prime(n)
 	print("First prime number is done...")
+	end_time = time.time()
+	print(f"Time elapsed: {round((end_time - start_time) // 60)} minutes {round((end_time - start_time) % 60)} seconds")
 	q = get_probably_prime(n)
 	print("Second prime number is done...")
 	while q == p:

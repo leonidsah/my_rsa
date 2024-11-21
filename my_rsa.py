@@ -21,5 +21,5 @@ def generate_keys(n):
 if __name__ == "__main__":
     n = 1024
     public, private = generate_keys(n).values()
-    print(public)
-    print(private)
+    print(public[1])
+    print(private[1])

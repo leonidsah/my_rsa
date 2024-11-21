@@ -6,9 +6,10 @@ def generate_closed_exponent(euler):
 def generate_open_exponent(euler):
     return 0
 
+# Useless comment
 # Returns dict {public: public_key, private: private_key}
-def generate_keys():
-    p, q = generate_primes()
+def generate_keys(n):
+    p, q = generate_primes(n)
     n = p * q
     euler = (p - 1) * (q - 1)
     e = generate_open_exponent(euler)
@@ -18,6 +19,7 @@ def generate_keys():
 
 
 if __name__ == "__main__":
-    public, private = generate_keys().values()
-    print(public)
-    print(private)
+    n = 1024
+    public, private = generate_keys(n).values()
+    print(public[1])
+    print(private[1])

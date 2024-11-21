@@ -30,6 +30,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        pip install sphinx sphinx-rtd-theme
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
@@ -45,3 +46,14 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         gh pr merge ${{ github.event.pull_request.number }} --merge --delete-branch
+    # Шаг 3: Генерируем документацию
+    - name: Build documentation
+      run: |
+        sphinx-build -b html source _build/html
+
+    # Шаг 4: Деплой на GitHub Pages
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: _build/html

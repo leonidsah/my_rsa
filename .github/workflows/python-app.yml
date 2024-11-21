@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: write
 
 jobs:
   build:
@@ -37,3 +38,9 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
+    - name: Merge Pull Request
+      if: ${{ github.event_name == 'pull_request' && success() }}  # Выполняем только для PR и после успешного теста
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        gh pr merge ${{ github.event.pull_request.number }} --merge --delete-branch

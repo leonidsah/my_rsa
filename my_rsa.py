@@ -6,6 +6,7 @@ def generate_closed_exponent(euler):
 def generate_open_exponent(euler):
     return 0
 
+# Useless comment
 # Returns dict {public: public_key, private: private_key}
 def generate_keys(n):
     p, q = generate_primes(n)

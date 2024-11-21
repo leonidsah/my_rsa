@@ -2,9 +2,9 @@ from prime_generator import generate_primes
 
 
 def generate_closed_exponent(euler):
-    return 0
+    return 1
 def generate_open_exponent(euler):
-    return 0
+    return 1
 
 # Useless comment
 # Returns dict {public: public_key, private: private_key}
